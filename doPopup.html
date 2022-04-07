@@ -1,12 +1,21 @@
 <head>
 	<style>
 		body { background-color: black; }
+		span { color: white; }
 	</style>
-	<script>
-		window.open("https://google.com", "", "width=700,height=700");
-		setTimeout(() => {window.close();}, 100)
-	</script>
+	
 </head>
 <body>
-	
+	<script>
+		var newWin = window.open("https://google.com", "", "width=700,height=700");
+		if(!newWin || newWin.closed || typeof newWin.closed=='undefined') 
+		{ 
+			var msg = document.createElement('span');
+			msg.textContent = 'Popup was blocked';
+			document.body.appendChild(msg);
+		}
+		else {
+			setTimeout(() => {window.close();}, 100)
+		}
+	</script>
 </body>
